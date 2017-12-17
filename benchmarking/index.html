@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>open QITools</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!-- jquery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+<script src="/openmetaanalysis.js"></script>
+<script>
+$(document).ready(function(){
+  //button handlers
+  $("#bttncalculate2").on("click", function(e){
+    e.preventDefault();
+	var width = Math.abs(parseFloat($("#upper").val()) - parseFloat($("#lower").val()) );
+	var se = 0;
+	var sd = 0;
+	var subjects = parseFloat($("#subjects").val());
+	if ($("#ci").is(':checked')){
+		se = width/2/1.96 //Chinn, 2000 PMID 11113947
+		sd = se * Math.sqrt(subjects)  //Varies with sample size
+		}
+	if ($("#iqr").is(':checked')){
+		sd = width/1.35;
+		}
+	if ($("#range").is(':checked')){
+		sd = width/4;
+		}
+	if ($("#median").val() != ''){
+		median = parseFloat($("#median").val())
+		if ($("#median").val() != '' && $("#range").is(':checked')){
+			// Hozo, 2005 PMID 15840177: equation 4
+			var mean = (parseFloat($("#lower").val()) + 2*median + parseFloat($("#upper").val()) )/4 + (parseFloat($("#lower").val()) - 2*median + parseFloat($("#upper").val()) )/(4*subjects)
+			mean = mean.toFixed(2).toString();
+			$("#answer_mean").html(mean);
+			}
+		else if ($("#median").val() != '' && $("#iqr").is(':checked')){
+			// Wan, 2014 PMID 25524443: equation 14
+			var mean = (parseFloat($("#lower").val()) + median + parseFloat($("#upper").val()) )/3
+			mean = mean.toFixed(2).toString();
+			$("#answer_mean").html(mean);
+			}
+		else	{
+			alert('Selecte Range and enter values for the range in order to convert the median to a mean.')
+			}
+		}
+	sd = sd.toFixed(2).toString();
+    	$("#answer_sd").html(sd);
+  });
+  $("#bttncalculate3").on("click", function(e){
+  //Continous to binary conversion
+    e.preventDefault();
+	var Z = Math.abs(parseFloat($("#yourobservation").val()) - parseFloat($("#yourobservation").val()) ) / parseFloat($("#populationsigma").val());
+	Z = Z.toFixed(2).toString();
+    	$("#answer_sd").html(Z);
+	});
+});
+</script>
+
+</head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>open QITools</h1>
+        <p>Collaborative tools for the conduct and teaching of clinical quality improvement</p>
+
+
+        <p class="view"><a href="https://github.com/qitools">View source files at GitHub</a></p>
+
+      </header>
+      <section>
+        <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Benchmarking</h3>
+<div style="font-style:italic">(links may be slow to load on first use)</div>
+<h3>First, get benchmark values and their standard deviations</h3>
+<form>
+	<table>
+		<caption>Calculation of standard deviation from<br/>confidence interval, range, or interquartile range</caption>
+		<tr><td><input type="text" id="lower" placeholder="Lower limit"/></td><td><input type="text" id="median" placeholder="Median (optional)"/></td><td><input type="text" id="upper" placeholder="Upper limit"/></td></tr>
+		<tr><td colspan="3" align="center"><input type="text" id="subjects" placeholder="Number subjects in group" style="width: 200px;" /></td></tr>
+		<tr><td colspan="3" align="center"><input id="ci" name="type2" class="type2" type="radio"><label for="ci">Confidence interval</label>&nbsp;<input id="iqr" name="type2" class="type2" type="radio"><label for="iqr">Interquartile range</label>&nbsp;<input id="range" name="type2" class="type3" type="radio"><label for="range">Range</label></td></tr>
+		<tr><td colspan="3"><button id="bttncalculate2">Calculate standard deviation</button> Mean: <span id="answer_mean"></span> SD: <span id="answer_sd"></span>
+			<div>Details from: <a href="http://pubmed.gov/25524443,15840177">mean to median</a>, <a href="http://pubmed.gov/11113947">confidence interval</a>, <a href="http://handbook-5-1.cochrane.org/chapter_7/7_7_3_5_mediansand_interquartile_ranges.htm">interquartile range</a>, and <a href="http://www.biomedcentral.com/1471-2288/5/13">range</a>. See downloadable spreadsheet for calculations by Wan, 2014 PMID <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383202/">25524443</a></div>
+		</td></tr>
+	</table>
+</form>
+<h3>Second, get z-score from your observation, the population value, and the population standard deviation</h3>
+<form>
+	<table>
+		<caption>Calculation of z-score</caption>
+		<tr><td><input type="text" id="yourobservation" placeholder="Your observation"/></td><td><input type="text" id="populationvalue" placeholder="Population value"/></td><td><input type="text" id="populationsigma" placeholder="Population standard deviation"/></td></tr>
+		<tr><td colspan="3"><button id="bttncalculate3">Calculate z score</button> Z: <span id="answer_Z"></span>
+			<div>Details from: <a href=""></a>.</div>
+		</td></tr>
+	</table>
+</form>
+<h3>Second, get percentile</h3>
+<div><a href="http://home.ubalt.edu/ntsbarsh/Business-stat/otherapplets/pvalues.htm#rnorm">here</a> or <a href="https://measuringu.com/pcalcz/">here</a></div>
+<script>
+//For gh-pages
+//Page history and edit
+var pagename = location.pathname.split('/').slice(-1);
+if (pagename.length < 1){pagename = "index.html"}
+document.write("<div style='text-align:center'><a href='https://github.com/qitools/qitools.github.io/blob/master/index.html'>Edit this page</a> - <a href='https://github.com/qitools/qitools.github.io/commits/master/index.html'>Page history</a></div>")
+</script>
+
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-56740469-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
