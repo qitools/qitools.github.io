@@ -5,15 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>open QITools</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <!-- jquery -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
-<script src="/openmetaanalysis.js"></script>
 <script>
 $(document).ready(function(){
   //button handlers
@@ -55,11 +54,10 @@ $(document).ready(function(){
     	$("#answer_sd").html(sd);
   });
   $("#bttncalculate3").on("click", function(e){
-  //Continous to binary conversion
     e.preventDefault();
-	var Z = Math.abs(parseFloat($("#yourobservation").val()) - parseFloat($("#yourobservation").val()) ) / parseFloat($("#populationsigma").val());
+	var Z = Math.abs(parseFloat($("#yourobservation").val()) - parseFloat($("#populationvalue").val()) ) / parseFloat($("#populationsigma").val());
 	Z = Z.toFixed(2).toString();
-    	$("#answer_sd").html(Z);
+    	$("#answer_Z").html(Z);
 	});
 });
 </script>
@@ -101,7 +99,7 @@ $(document).ready(function(){
 		</td></tr>
 	</table>
 </form>
-<h3>Second, get percentile</h3>
+<h3>Third, get percentile</h3>
 <div><a href="http://home.ubalt.edu/ntsbarsh/Business-stat/otherapplets/pvalues.htm#rnorm">here</a> or <a href="https://measuringu.com/pcalcz/">here</a></div>
 <script>
 //For gh-pages
