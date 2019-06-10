@@ -77,10 +77,10 @@ $(document).ready(function(){
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Benchmarking</h3>
 <div style="font-style:italic">(links may be slow to load on first use)</div>
-<h3>First, get benchmark values and their standard deviations</h3>
+<h3>First, get population benchmark values and their standard deviations</h3>
 <form>
 	<table>
-		<caption>Calculation of standard deviation from<br/>confidence interval, range, or interquartile range</caption>
+		<caption>Calculation of population standard deviation from<br/>confidence interval, range, or interquartile range</caption>
 		<tr><td><input type="text" id="lower" placeholder="Lower limit"/></td><td><input type="text" id="median" placeholder="Median (optional)"/></td><td><input type="text" id="upper" placeholder="Upper limit"/></td></tr>
 		<tr><td colspan="3" align="center"><input type="text" id="subjects" placeholder="Number subjects in group" style="width: 200px;" /></td></tr>
 		<tr><td colspan="3" align="center"><input id="ci" name="type2" class="type2" type="radio"><label for="ci">Confidence interval</label>&nbsp;<input id="iqr" name="type2" class="type2" type="radio"><label for="iqr">Interquartile range</label>&nbsp;<input id="range" name="type2" class="type3" type="radio"><label for="range">Range</label></td></tr>
@@ -89,7 +89,7 @@ $(document).ready(function(){
 		</td></tr>
 	</table>
 </form>
-<h3>Second, get z-score from your observation, the population value, and the population standard deviation</h3>
+<h3>Second, get z-score for your local observation by using the population benchmark value, and the population standard deviation</h3>
 <form>
 	<table>
 		<caption>Calculation of z-score</caption>
