@@ -37,25 +37,22 @@ $(document).ready(function(){
 		if ($("#median").val() != '' && $("#range").is(':checked')){
 			// Hozo, 2005 PMID 15840177: equation 4
 			var mean = (parseFloat($("#lower").val()) + 2*median + parseFloat($("#upper").val()) )/4 + (parseFloat($("#lower").val()) - 2*median + parseFloat($("#upper").val()) )/(4*subjects)
-			mean = mean.toFixed(2).toString();
-			$("#answer_mean").html(mean);
+			$("#answer_mean").html(mean.toFixed(2).toString());
 			}
 		else if ($("#median").val() != '' && $("#iqr").is(':checked')){
 			// Wan, 2014 PMID 25524443: equation 14
 			var mean = (parseFloat($("#lower").val()) + median + parseFloat($("#upper").val()) )/3
-			mean = mean.toFixed(2).toString();
-			$("#answer_mean").html(mean);
+			$("#answer_mean").html(mean.toFixed(2).toString());
 			}
 		else	{
 			alert('Selecte Range and enter values for the range in order to convert the median to a mean.')
 			}
 		}
-	sd = sd.toFixed(2).toString();
-    	$("#answer_sd").html(sd);
-	seventyfifth = 0.67 * sd +  mean.toFixed(2);
-	eightieth = 0.84 * sd +  mean.toFixed(2);
-    	$("#seventyfifth").html(seventyfifth);
-    	$("#eightieth").html(eightieth);
+    	$("#answer_sd").html(sd.toFixed(2).toString());
+	seventyfifth = mean + 0.67 * sd;
+	eightieth    = mean + 0.84 * sd;
+    	$("#seventyfifth").html(seventyfifth.toFixed(2).toString());
+    	$("#eightieth").html(eightieth.toFixed(2).toString());
   });
   $("#bttncalculate3").on("click", function(e){
     e.preventDefault();
