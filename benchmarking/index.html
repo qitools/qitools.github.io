@@ -52,8 +52,8 @@ $(document).ready(function(){
 		}
 	sd = sd.toFixed(2).toString();
     	$("#answer_sd").html(sd);
-	seventyfifth = 0.67 * sd + mean;
-	eightieth = 0.84 * sd + mean;
+	seventyfifth = 0.67 * sd +  mean.toFixed(2);
+	eightieth = 0.84 * sd +  mean.toFixed(2);
     	$("#seventyfifth").html(seventyfifth);
     	$("#eightieth").html(eightieth);
   });
