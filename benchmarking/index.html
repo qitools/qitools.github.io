@@ -90,10 +90,9 @@ $(document).ready(function(){
   $("#bttncalculate3").on("click", function(e){
     e.preventDefault();
 	var Z = Math.abs(parseFloat($("#yourobservation").val()) - parseFloat($("#populationvalue").val()) ) / parseFloat($("#populationsigma").val());
-	Z = Z.toFixed(2).toString();
     	$("#answer_Z").html(Z.toFixed(2).toString());
-	//var P = GetZPercent(Z);
-    //	$("#answer_P").html(P.toFixed(2).toString());
+	var P = GetZPercent(Z);
+    	$("#answer_P").html(P.toFixed(2).toString());
 	});
 });
 </script>
