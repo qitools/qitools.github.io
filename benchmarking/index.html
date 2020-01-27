@@ -15,7 +15,40 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script>
 $(document).ready(function(){
-  //button handlers
+	# From: https://stackoverflow.com/questions/33087520/javascript-possible-to-get-percentile-by-given-z-score-calculating-quantile
+	function GetZPercent(z) {
+
+	  // z == number of standard deviations from the mean
+
+	  // if z is greater than 6.5 standard deviations from the mean the
+	  // number of significant digits will be outside of a reasonable range
+
+	  if (z < -6.5) {
+	    return 0.0;
+	  }
+
+	  if (z > 6.5) {
+	    return 1.0;
+	  }
+
+	  var factK = 1;
+	  var sum = 0;
+	  var term = 1;
+	  var k = 0;
+	  var loopStop = Math.exp(-23);
+
+	  while(Math.abs(term) > loopStop) {
+	    term = .3989422804 * Math.pow(-1,k) * Math.pow(z,k) / (2 * k + 1) / Math.pow(2,k) * Math.pow(z,k+1) / factK;
+	    sum += term;
+	    k++;
+	    factK *= k;
+	  }
+
+	  sum += 0.5;
+
+	  return sum;
+	}
+ //button handlers
   $("#bttncalculate2").on("click", function(e){
     e.preventDefault();
 	var width = Math.abs(parseFloat($("#upper").val()) - parseFloat($("#lower").val()) );
@@ -58,7 +91,10 @@ $(document).ready(function(){
     e.preventDefault();
 	var Z = Math.abs(parseFloat($("#yourobservation").val()) - parseFloat($("#populationvalue").val()) ) / parseFloat($("#populationsigma").val());
 	Z = Z.toFixed(2).toString();
-    	$("#answer_Z").html(Z);
+    	$("#answer_Z").html(Z.toFixed(2).toString());
+	var P = GetZPercent(Z)
+    	$("#answer_P").html(P.toFixed(2).toString());
+	  
 	});
 });
 </script>
@@ -95,17 +131,19 @@ $(document).ready(function(){
 		</td></tr>
 	</table>
 </form>
-<h3>Second, get z-score for your local observation by using the population benchmark value, and the population standard deviation</h3>
+<h3>Second, get percentile for your local observation by using the population benchmark value, and the population standard deviation (from above)</h3>
 <form>
 	<table>
-		<caption>Calculation of z-score</caption>
+		<caption>Calculation of z-score and percentile</caption>
 		<tr><td><input type="text" id="yourobservation" placeholder="Your observation"/></td><td><input type="text" id="populationvalue" placeholder="Population value"/></td><td><input type="text" id="populationsigma" placeholder="Population standard deviation"/></td></tr>
-		<tr><td colspan="3"><button id="bttncalculate3">Calculate z score</button> Z: <span id="answer_Z"></span>
-			<div>Details from: <a href=""></a>.</div>
+		<tr><td colspan="3"><button id="bttncalculate3">Calculate z</button><br/>
+			Z: <span id="answer_Z"></span><br/>
+			Percentile: <span id="answer_P"></span>
+			<div>Details from: <a href="https://stackoverflow.com/questions/33087520/javascript-possible-to-get-percentile-by-given-z-score-calculating-quantile">stackoverflow</a>.</div>
 		</td></tr>
 	</table>
 </form>
-<h3>Third, get percentile</h3>
+<h3>Alternatively, get percentile from measuringu.com</h3>
 <div>Enter Z score at <a href="https://measuringu.com/pcalcz/">here</a> (use One-sided option)</div>
 <script>
 //For gh-pages
