@@ -95,8 +95,14 @@ $(document).ready(function(){
 	var P = GetZPercent(Z);
     	$("#answer_P").html(P.toFixed(2).toString());
 	});
-  $("ci").click(function(){
-    $("subjects").toggle();
+  $("#ci").click(function(){
+    $("#subjects").show();
+  });
+  $("#iqr").click(function(){
+    $("#subjects").hide();
+  });
+  $("#range").click(function(){
+    $("#subjects").hide();
   });
 });
 </script>
