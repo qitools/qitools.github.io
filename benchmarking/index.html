@@ -82,8 +82,9 @@ $(document).ready(function(){
 			}
 		}
     	$("#answer_sd").html(sd.toFixed(2).toString());
-	seventyfifth = mean + 0.67 * sd;
-	eightieth    = mean + 0.84 * sd;
+	var median = $("#median").val()
+	seventyfifth = median + 0.67 * sd;
+	eightieth    = median + 0.84 * sd;
     	$("#fiftieth").html($("#median").val());
     	$("#seventyfifth").html(seventyfifth.toFixed(2).toString());
     	$("#eightieth").html(eightieth.toFixed(2).toString());
