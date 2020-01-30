@@ -119,8 +119,8 @@ $(document).ready(function(){
 	<table>
 		<caption>Calculation of population standard deviation from<br/>confidence interval, range, or interquartile range</caption>
 		<tr><td><input type="text" id="lower" placeholder="Lower limit"/></td><td><input type="text" id="median" placeholder="Median (optional)"/></td><td><input type="text" id="upper" placeholder="Upper limit"/></td></tr>
-		<tr><td colspan="3" align="center"><input type="text" id="subjects" placeholder="Number subjects in group" style="width: 200px;" /></td></tr>
-		<tr><td colspan="3" align="center"><input id="ci" name="type2" class="type2" type="radio"><label for="ci">Confidence interval</label>&nbsp;<input id="iqr" name="type2" class="type2" type="radio"><label for="iqr">Interquartile range</label>&nbsp;<input id="range" name="type2" class="type3" type="radio"><label for="range">Range</label></td></tr>
+		<tr><td colspan="3" align="center"><input type="text" id="subjects" placeholder="Number subjects in group" style="display:none;width: 200px;" /></td></tr>
+		<tr><td colspan="3" align="center"><input id="ci" name="type2" class="type2" type="radio" onclick="$("subjects").toggle()"><label for="ci">Confidence interval</label>&nbsp;<input id="iqr" name="type2" class="type2" type="radio"><label for="iqr">Interquartile range</label>&nbsp;<input id="range" name="type2" class="type3" type="radio"><label for="range">Range</label></td></tr>
 		<tr><td colspan="3"><button id="bttncalculate2">Calculate standard deviation and 75th, 80th percentiles</button><br/>
 			Estimates:</br>
 			Mean: <span id="answer_mean"></span> SD: <span id="answer_sd"></span><br/>
