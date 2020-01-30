@@ -112,7 +112,7 @@ $(document).ready(function(){
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Benchmarking</h3>
 <div style="font-style:italic">(links may be slow to load on first use)</div>
-<h3>First, use population benchmark values to calculate estimates of standard deviation and 75th, 80th percentiles</h3>
+<h3>Use published benchmark values to calculate estimates of standard deviation and 75th, 80th percentiles</h3>
 <form>
 	<table>
 		<caption>Calculation of population standard deviation from<br/>confidence interval, range, or interquartile range</caption>
@@ -129,7 +129,7 @@ $(document).ready(function(){
 		</td></tr>
 	</table>
 </form>
-<h3>Second, get percentile for your local observation by using the population benchmark value, and the population standard deviation (from above)</h3>
+<h3>Determine your percentile by comparing your rate to the published published median benchmark value and the estimated standard deviation of published rates (from above)</h3>
 <form>
 	<table>
 		<caption>Calculation of z-score and percentile</caption>
@@ -148,7 +148,7 @@ $(document).ready(function(){
 //Page history and edit
 var pagename = location.pathname.split('/').slice(-1);
 if (pagename.length < 1){pagename = "index.html"}
-document.write("<div style='text-align:center'><a href='https://github.com/qitools/qitools.github.io/blob/master/index.html'>Edit this page</a> - <a href='https://github.com/qitools/qitools.github.io/commits/master/index.html'>Page history</a></div>")
+document.write("<div style='text-align:center'><a href='https://github.com/qitools/qitools.github.io/edit/master" + location.pathname + "'>Edit this page</a> - <a href='https://github.com/qitools/qitools.github.io/commits/master" + location.pathname + "'>Page history</a></div>")
 </script>
 
       </footer>
