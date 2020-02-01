@@ -135,7 +135,7 @@ $(document).ready(function(){
 	      <h3>Create your local goal, by using published benchmarks to estimate percentiles of performace</h3>
 	      <div>Use published benchmarks to calculate estimates of mean and standard deviation which leads to estimates of the 75th and 80th percentiles.</div>
 <form>
-	<table>
+	<table style="width:600px">
 		<caption>Enter values</caption>
 		<tr><td style="width:225px">Example for hypertension (BP &lt; 140/90):<br/>30 (chosen to be symetric to upper quantile)</td><td><br/>60 (from <a href="https://www.ncqa.org/hedis/measures/controlling-high-blood-pressure/">HEDIS</a>)</td><td><br/>90 (<a href="http://pubmed.gov/26939059">from Kaiser</a>)</td></tr>
 		<tr><td colspan="3" align="center">I have: <input id="ci" name="type2" class="type2" type="radio"><label for="ci">Confidence interval</label>&nbsp;<input id="sd" name="type2" class="type2" type="radio"><label for="sd">Standard deviation</label>&nbsp;<input id="iqr" name="type2" class="type2" type="radio"><label for="iqr">Interquartile range</label>&nbsp;<input id="range" name="type2" class="type3" type="radio"><label for="range">Range</label></td></tr>
