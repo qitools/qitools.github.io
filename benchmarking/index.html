@@ -73,7 +73,7 @@ $(document).ready(function(){
 		}
 	if ($("#range").is(':checked')){
 		sd = width/4;
-		if (lower == ''){alert('bob');sd = Math.abs(upper - median)/2 }
+		if (lower <= 0){alert('bob');sd = Math.abs(upper - median)/2}
 		}
 	if ($("#median").val() != ''){
 		if ($("#median").val()      != '' && $("#range").is(':checked')){
