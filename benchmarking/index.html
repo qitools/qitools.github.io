@@ -52,9 +52,10 @@ $(document).ready(function(){
   $("#bttncalculate2").on("click", function(e){
     e.preventDefault();
 	var mean = 0;
-	var median = 0;
+	var median = parseFloat($("#median").val());
 	var lower = parseFloat($("#lower").val());
-	var width = Math.abs(parseFloat($("#upper").val()) - lower);
+	var upper = parseFloat($("#upper").val());
+	var width = Math.abs(upper - lower);
 	var se = 0;
 	var sd = 0;
 	var subjects = parseFloat($("#subjects").val());
@@ -71,11 +72,10 @@ $(document).ready(function(){
 		sd = width/1.35;
 		}
 	if ($("#range").is(':checked')){
-		if (lower = null){alert('bob')}
 		sd = width/4;
+		if (lower == null){alert('bob');sd = Math.abs(upper - median)/2 }
 		}
 	if ($("#median").val() != ''){
-		median = parseFloat($("#median").val())
 		if ($("#median").val()      != '' && $("#range").is(':checked')){
 			// Range
 			// Hozo, 2005 PMID 15840177: equation 4
