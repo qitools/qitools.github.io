@@ -70,7 +70,7 @@ $(document).ready(function(){
  //button handlers
   $("#bttncalculate2").on("click", function(e){
     e.preventDefault();
-	var mean = 0;
+	var mean = parseFloat($("#mean").val());
 	var median = parseFloat($("#median").val());
 	var lower = parseFloat($("#lower").val());
 	var upper = parseFloat($("#upper").val());
@@ -81,8 +81,10 @@ $(document).ready(function(){
 	var subjects = parseFloat($("#subjects").val());
 	if ($("#ci").is(':checked')){
 		mean = parseFloat($("#mean").val())
+		median = mean;
 		se = width/2/1.96 //Chinn, 2000 PMID 11113947
-		sd = se * Math.sqrt(subjects)  //Varies with sample size
+		sd = se;
+		//sd = se * Math.sqrt(subjects)  //Varies with sample size
 		}
 	if ($("#sd").is(':checked')){
 		mean = parseFloat($("#mean").val())
@@ -117,10 +119,10 @@ $(document).ready(function(){
 			}
 		else	{
 			// CI
-			$("#answer_mean").html(mean.toFixed(2).toString());
 //			alert('Select Range and enter values for the range in order to convert the median to a mean.')
 			}
 		}
+		$("#answer_mean").html(mean.toFixed(2).toString());
     	$("#answer_sd").html(sd.toFixed(2).toString());
 		if (median - quantileupper < 0){
 	    	$("#answer_sd").append(' (adjusted for asymmetry)');
@@ -128,7 +130,8 @@ $(document).ready(function(){
 		seventyfifth = median + 0.67 * sd;
 		eightieth    = median + 0.84 * sd;
 	  	ninetieth    = median + 1.30 * sd;
-    	$("#fiftieth").html($("#median").val());
+    	//$("#fiftieth").html($("#median").val());
+    	$("#fiftieth").html(median.toFixed(2).toString());
     	$("#seventyfifth").html(seventyfifth.toFixed(2).toString());
     	$("#eightieth").html(eightieth.toFixed(2).toString());
     	$("#ninetieth").html(ninetieth.toFixed(2).toString());
@@ -197,7 +200,7 @@ $(document).ready(function(){
 		<tr><th>&nbsp;</th><th>Lower range<br/>(optional)</td><th>Median<br/>(national or regional rate)</th><th>Upper range<br/>(best published)</th></tr>
 		<tr><td>Example:<br/>BP &lt; 140/90</td><td class="center">32<br/>(chosen to be symmetric to upper quantile)</td><td class="center">65<br/>(from <a href="https://www.ncqa.org/hedis/measures/controlling-high-blood-pressure/">HEDIS</a>)</td><td class="center">90<br/>(<a href="http://pubmed.gov/26939059">from Kaiser</a>)</td></tr>
 		<tr><td align="center">I have:</td><td colspan="3" style="text-align: center;"><input id="ci" name="type2" class="type2" type="radio"><label for="ci">Confidence interval</label>&nbsp;<input id="sd" name="type2" class="type2" type="radio"><label for="sd">Standard deviation</label>&nbsp;<input id="iqr" name="type2" class="type2" type="radio"><label for="iqr">Interquartile range</label>&nbsp;<input id="range" name="type2" class="type3" type="radio"><label for="range">Range</label></td></tr>
-		<tr><td>My values:</td><td><input type="text" id="lower" placeholder="Lower limit"></td><td><input type="text" id="mean" placeholder="Mean"><input type="text" id="median" placeholder="Median" style="display:none;"></td><td><input type="text" id="upper" placeholder="Upper limit"><input type="text" id="sd_input" placeholder="Standard deviation" style="display:none;"></td></tr>
+		<tr><td>My values:</td><td><input type="text" id="lower" placeholder="Lower limit (optional)"></td><td><input type="text" id="mean" placeholder="Mean"><input type="text" id="median" placeholder="Median" style="display:none;"></td><td><input type="text" id="upper" placeholder="Upper limit"><input type="text" id="sd_input" placeholder="Standard deviation" style="display:none;"></td></tr>
 		<!--<tr><td colspan="4" class="center"><input type="text" id="subjects" placeholder="Number subjects in group" style="display:none;width: 200px;" /></td></tr>-->
 		<tr><td colspan="4" class="center"><button id="bttncalculate2">Calculate standard deviation and 75th, 80th percentiles</button><br/>
 		</td></tr>
