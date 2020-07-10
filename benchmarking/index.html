@@ -203,9 +203,11 @@ $(document).ready(function(){
 <form>
 	<table style="width:600px">
 		<caption>Calculator</caption>
+		<tr><td align="center" colspan="4" style="text-align: left;color: #0051ba;font-weight:bold">1. Example using rates of blood pressure control</td></tr>
 		<tr><th>&nbsp;</th><th>Lower range<br/>(optional)</td><th>Median<br/>(national or regional rate)</th><th>Upper range<br/>(best published)</th></tr>
 		<tr><td>Example:<br/>BP &lt; 140/90</td><td class="center">Not needed</td><td class="center">65<br/>(from <a href="https://www.ncqa.org/hedis/measures/controlling-high-blood-pressure/">HEDIS</a>)</td><td class="center">90<br/>(<a href="http://pubmed.gov/26939059">from Kaiser</a>)</td></tr>
-		<tr><td align="center" colspan="4" style="text-align: center;color: #0051ba;font-weight:bold">Enter your values (replace example values with yours)</td></tr>
+		<tr><td align="center" colspan="4" style="text-align: left;color: #0051ba;font-weight:bold">2. Find median/mean values for your clinic topic using HEDIS and other sties. Find best rported rates from PubMed.</td></tr>
+		<tr><td align="center" colspan="4" style="text-align: left;color: #0051ba;font-weight:bold">3. Enter your values (replace example values with yours)</td></tr>
 		<tr><td colspan="4" style="text-align: center;"><input id="range" name="type2" class="type3" type="radio" checked><label for="range">Range</label>&nbsp;<input id="ci" name="type2" class="type2" type="radio"><label for="ci">Confidence interval</label>&nbsp;<input id="sd" name="type2" class="type2" type="radio"><label for="sd">Standard deviation</label>&nbsp;<input id="iqr" name="type2" class="type2" type="radio"><label for="iqr">Interquartile range</label></td></tr>
 		<tr>
 			<td style="text-align: center;width;33%" colspan="2">Lowest rate reported<br/><input type="text" id="lower" placeholder="Optional"></td>
@@ -214,8 +216,9 @@ $(document).ready(function(){
 		</tr>
 		<!--<tr><td colspan="4" class="center"><input type="text" id="subjects" placeholder="Number subjects in group" style="display:none;width: 200px;" /></td></tr>-->
 		<tr><td colspan="4" class="center"><button id="bttncalculate2">Calculate standard deviation and 75th, 90th percentiles</button><br/>
+		<tr><td align="center" colspan="4" style="text-align: left;color: #0051ba;font-weight:bold">4. Results</td></tr>
 		<tr>
-		<td align="center" colspan="4" style="text-align: center;color: #0051ba;font-weight:bold">Results:<br/>
+		<td align="center" colspan="4" style="text-align: left;color: #0051ba;font-weight:bold">Results:<br/>
 		<div class="container" style="position:relative;width:600px;height:300px;border:1">
 			<img src="normal.png" alt="normal distribution" style=""/>
 		<div id="25th" style="bottom:8px;left:240px;width:20px;position:absolute;font-weight:bold;font-size:16px">57</div>
@@ -261,7 +264,17 @@ $(document).ready(function(){
 <div>Enter Z score at <a href="https://measuringu.com/pcalcz/">here</a> (use One-sided option)</div>
 </section>
 
-<footer>	      
+<footer>
+<script>
+//For gh-pages
+//Page history and edit
+var pagename = location.pathname.split('/').slice(-1);
+if (pagename.toString().length < 1){pagename = "index.html"}
+document.write("<div style='text-align:center'><a href='https://github.com/qitools/qitools.github.io/blob/master/" + pagename + "'>Edit this page</a> - <a href='https://github.com/qitools/qitools.github.io/commits/master/" + pagename + "'>Page history</a></div>")
+// <a href="https://github.com/qitools/qitools.github.io/blob/master/benchmarking/index.html">Edit this page</a>
+
+</script>
+	
 <script>
 //For gh-pages
 //Page history and edit
