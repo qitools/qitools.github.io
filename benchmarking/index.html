@@ -144,7 +144,8 @@ $(document).ready(function(){
   });
   $("#bttncalculate3").on("click", function(e){
     e.preventDefault();
-	var Z = Math.abs(parseFloat($("#yourobservation").val()) - parseFloat($("#populationvalue").val()) ) / parseFloat($("#populationsigma").val());
+	//var Z = Math.abs(parseFloat($("#yourobservation").val()) - parseFloat($("#populationvalue").val()) ) / parseFloat($("#populationsigma").val());
+	var Z = (parseFloat($("#yourobservation").val()) - parseFloat($("#populationvalue").val()) ) / parseFloat($("#populationsigma").val()); //added 08/03/2020
     	$("#answer_Z").html(Z.toFixed(2).toString());
 	var P = GetZPercent(Z);
     	$("#answer_P").html(P.toFixed(2).toString());
