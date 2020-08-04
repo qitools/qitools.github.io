@@ -64,7 +64,10 @@ $(document).ready(function(){
 	  }
 
 	  sum += 0.5;
-
+		
+	if (z < 0){
+		sum = 0.5 - sum; // Added 08/03/2020
+	}
 	  return sum;
 	}
  //button handlers
