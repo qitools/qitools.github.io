@@ -33,11 +33,12 @@ th {
 <!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-	function toggle(itemno)
-		{
+	function toggle(itemno) {
 		document.getElementById(itemno).style.display = (document.getElementById(itemno).style.display == "none" ) ? "" : "none";
 		}
+
+	$(document).ready(function(){
+
 	// From: https://stackoverflow.com/questions/33087520/javascript-possible-to-get-percentile-by-given-z-score-calculating-quantile
 	function GetZPercent(z) {
 
@@ -223,15 +224,16 @@ $(document).ready(function(){
 					<a href="javascript:DivName='pubmed-filters';toggle(DivName);toggle(DivName+'showdetails');toggle(DivName+'hidedetails')">Show details of PubMed search filters</a>
 					<noscript><div>(This link toggles display of PubMed filters details)</div></noscript>
 					</div>
-					<div id="pubmed-filtershidedetails" style="display:none">
+					<div id="pubmed-filtershidedetails" style="display:none">Best reported rates from PubMed. 
 					<a href="javascript:DivName='pubmed-filters';toggle(DivName);toggle(DivName+'showdetails');toggle(DivName+'hidedetails')">Hide details of PubMed search filters</a>
 					<noscript><div>(This link toggles display of help details)</div></noscript>
 					</div>
-					<div id="pubmed-filters" style="display:block;width:700px;border:2px solid red;box-shadow: 15px 15px 10px #888888;">
+					<div id="pubmed-filters" style="display:none;width:550px;border:2px solid red;box-shadow: 15px 15px 10px #888888;">
 					<ol>
-						<li>Suggested filters based on (<a href="http://pubmed.gov/21806808,20671080" target=_blank>Wilczynski 2010; Hempel, 2011</a>) Example uses hypertension and Kaiser.
+						<li>Suggested filter based on (<a href="http://pubmed.gov/21806808,20671080" target=_blank>Wilczynski 2010; Hempel, 2011</a>)<img src="http://sumsearch.org/images/external.png" alt="Opens link in new window" />. This example searches for benchmarks for hypertension from Kaiser Permanente.
 							<ul>
-								<li>(Services Administration[major] OR quality) AND (improv* OR enhance* OR increase*) AND (intervention* OR initiative* OR strategy* OR program* OR Process* OR strateg* OR implement*) AND (hypertension[title] OR hypertension[major]) AND kaiser</li>
+								<li>(Health Services Administration[major] OR quality) AND (improv* OR enhance* OR increase*) AND (intervention* OR initiative* OR strategy* OR program* OR Process* OR strateg* OR implement*) <br/>AND <br/>(hypertension[title] OR hypertension[major]) <br/>AND <br/>Kaiser[title/abstract]</li>
+								<li><a href="https://pubmed.ncbi.nlm.nih.gov/?term=Kaiser[title/abstract]+AND+(hypertension%5Btitle%5D+OR+hypertension%5Bmajor%5D)+AND+(Health+Services+Administration%5Bmajor%5D+OR+quality)+AND+(improv*+OR+enhance*+OR+increase*)+AND+(intervention*+OR+initiative*+OR+strategy*+OR+program*+OR+Process*+OR+strateg*+OR+implement*)" target=_blank>Search this example at PubMed</a><img src="http://sumsearch.org/images/external.png" alt="Opens link in new window" /></li>
 							</ul>
 						</li>
 					</ol>
