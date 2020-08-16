@@ -34,7 +34,6 @@ th {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-	var DivName = "tips";
 	function toggle(itemno)
 		{
 		document.getElementById(itemno).style.display = (document.getElementById(itemno).style.display == "none" ) ? "" : "none";
@@ -145,7 +144,7 @@ $(document).ready(function(){
     	$("#seventyfifth").html(seventyfifth.toFixed(1).toString());
     	$("#eightieth").html(eightieth.toFixed(1).toString());
     	$("#ninetieth").html(ninetieth.toFixed(1).toString());
-    	$("#25th").html(twentyfifth.toFixed(1).toString());
+    	<!-- $("#25th").html(twentyfifth.toFixed(1).toString()); -->
     	$("#50th").html(median.toFixed(1).toString());
     	$("#75th").html(seventyfifth.toFixed(1).toString());
     	$("#90th").html(ninetieth.toFixed(1).toString());
@@ -228,12 +227,11 @@ $(document).ready(function(){
 					<a href="javascript:DivName='pubmed-filters';toggle(DivName);toggle(DivName+'showdetails');toggle(DivName+'hidedetails')">Hide details of PubMed search filters</a>
 					<noscript><div>(This link toggles display of help details)</div></noscript>
 					</div>
-					<div id="pubmed-filters" style="display:none;width:700px;border:2px solid red;box-shadow: 15px 15px 10px #888888;">
+					<div id="pubmed-filters" style="display:block;width:700px;border:2px solid red;box-shadow: 15px 15px 10px #888888;">
 					<ol>
-						<li>Are all points within the 3-sigma control limits? If so, the process is in control.</li>
-						<li>Suggested filters based on (http://pubmed.gov/21806808,20671080>Wilczynski 2010; Hempel, 2011</a>) Example uses hypertension and Kaiser.
+						<li>Suggested filters based on (<a href="http://pubmed.gov/21806808,20671080" target=_blank>Wilczynski 2010; Hempel, 2011</a>) Example uses hypertension and Kaiser.
 							<ul>
-								<li>Health Services Administration[major] OR quality) AND (improv* OR enhance* OR increase*) AND (intervention* OR initiative* OR strategy* OR program* OR Process* OR strateg* OR implement*) AND (hypertension[title] OR hypertension[major]</li>
+								<li>(Services Administration[major] OR quality) AND (improv* OR enhance* OR increase*) AND (intervention* OR initiative* OR strategy* OR program* OR Process* OR strateg* OR implement*) AND (hypertension[title] OR hypertension[major]) AND kaiser</li>
 							</ul>
 						</li>
 					</ol>
