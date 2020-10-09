@@ -70,9 +70,11 @@ th {
 
 	  sum += 0.5;
 		
+	if (z < 0){
+		alert('Percentile may be incorrect. Z= ' + z + "\r\nsum = " + sum); // Added 10/093/2020
+		sum = 0.5 - sum; // Added 08/03/2020
 	}
-	if (z < 0){sum = 0.5 - sum; // Added 08/03/2020 // moved from above 10/09/2020}
-	return sum;
+	  return sum;
 	}
  //button handlers
   $("#bttncalculate2").on("click", function(e){
